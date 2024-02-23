@@ -1,0 +1,7 @@
+pip install pipenv / pip3 install pipenv - Установить интрумент pipenv
+pipenv shell - Открыть консоль pipenv(Виртуального окружения)
+pip install Django - установить Джанго
+django-admin startproject core . - Создать базовые файлы Django в папке под названием core
+python manage.py startapp first_app - Создать приложением с именем first_app
+python manage.py makemigrations - Django проверяет наличие изменений
+python manage.py migrate - Внести изменения в БД
