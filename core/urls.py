@@ -16,7 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from first_app.views import CategoryListView, BrandListView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('category_list', CategoryListView.as_view()),
+    path('brand_list', BrandListView.as_view()),
 ]
+
+# path('<route>', <view>)
+# <route> - Маршрут в ссылке
+# <view> - Вью которая обрабатывает этот маршрут
+# Если <view> написан через Class то тогда .as_view()
