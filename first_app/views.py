@@ -1,6 +1,39 @@
 from django.shortcuts import render
-from django.views.generic import ListView
-from .models import Category, Brand
+from django.views.generic import ListView, DetailView, CreateView, TemplateView
+from .models import Category, Brand, Product
+from django.urls import reverse_lazy
+
+
+class HomeTemplateView(TemplateView):
+    template_name = 'home.html'
+
+
+class ProductCreateView(CreateView):
+    model = Product
+    template_name = 'product_create_template.html'
+    fields = '__all__'
+    success_url = reverse_lazy('brand_list_url')
+
+
+class BrandDetailView(DetailView):
+    model = Brand
+    template_name = 'brand_detail_template.html'
+    context_object_name = 'Brand'
+
+
+class BrandCreateView(CreateView):
+    model = Brand
+    template_name = 'brand_create_template.html'
+    fields = ['name']
+    # fields = '__all__'  # Чтобы выгрузить все поля в form
+    success_url = reverse_lazy('brand_list_url')
+    # reverse_lazy - Переадресация только после завершения создания бренда
+
+
+class ProductDetailView(DetailView):
+    model = Product
+    context_object_name = 'Product'  # Если забыть написать, то стандартное имя object
+    template_name = 'product_detail_template.html'
 
 
 class CategoryListView(ListView):

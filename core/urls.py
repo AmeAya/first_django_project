@@ -16,12 +16,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from first_app.views import CategoryListView, BrandListView
+from first_app.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('category_list', CategoryListView.as_view()),
-    path('brand_list', BrandListView.as_view()),
+    path('category_list', CategoryListView.as_view(), name='category_list_url'),
+    path('brand_list', BrandListView.as_view(), name='brand_list_url'),
+    path('product_detail/<int:pk>', ProductDetailView.as_view(), name='product_detail_url'),
+    path('brand_detail/<int:pk>', BrandDetailView.as_view(), name='brand_detail_url'),
+    path('create_brand', BrandCreateView.as_view(), name='create_brand_url'),
+    path('create_product', ProductCreateView.as_view(), name='create_product_url'),
+    path('', HomeTemplateView.as_view(), name='home_url'),
+    # <int:pk> - Означает что здесь в юрле должна быть переменная pk типа integer
 ]
 
 # path('<route>', <view>)

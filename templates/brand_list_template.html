@@ -5,8 +5,10 @@
     <title>KLHJGjwighqibwgq1</title>
 </head>
 <body>
+    <a href="{% url 'create_brand_url' %}">Create New Brand</a>
     {% for brand in Brands %}
         <h1>{{ brand.name }}</h1>
+        <a href="{% url 'brand_detail_url' brand.id %}">details</a>
     {% endfor %}
 </body>
 </html>
