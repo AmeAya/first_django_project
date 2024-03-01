@@ -4,6 +4,27 @@ from .models import Category, Brand, Product
 from django.urls import reverse_lazy
 
 
+class ProductDeleteView(DeleteView):
+    model = Product
+    template_name = 'product_delete_template.html'
+    context_object_name = 'Product'
+    success_url = reverse_lazy('product_list_url')
+
+
+class ProductUpdateView(UpdateView):
+    model = Product
+    template_name = 'product_update_template.html'
+    fields = '__all__'
+    context_object_name = 'Product'
+    success_url = reverse_lazy('product_list_url')
+
+
+class ProductListView(ListView):
+    model = Product
+    template_name = 'product_list_template.html'
+    context_object_name = 'Products'
+
+
 class BrandDeleteView(DeleteView):
     model = Brand
     template_name = 'brand_delete_template.html'
@@ -27,7 +48,7 @@ class ProductCreateView(CreateView):
     model = Product
     template_name = 'product_create_template.html'
     fields = '__all__'
-    success_url = reverse_lazy('brand_list_url')
+    success_url = reverse_lazy('product_list_url')
 
 
 class BrandDetailView(DetailView):
