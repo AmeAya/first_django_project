@@ -12,3 +12,8 @@ python manage.py createsuperuser - Создать главного админа
 Базовые настройки:
 Все новые приложения(apps) добавляются в setting.py -> INSTALLED_APPS.
 
+
+
+1) Создать productListView и добавить на него ссылку на странице home.html
+2) Создать productUpdateView и добавить на него ссылку на странице productListView
+3) Создать productDeleteView и добавить на него ссылку на странице productListView

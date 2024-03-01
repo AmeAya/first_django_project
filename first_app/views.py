@@ -1,7 +1,22 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView, CreateView, TemplateView
+from django.views.generic import ListView, DetailView, CreateView, TemplateView, UpdateView, DeleteView
 from .models import Category, Brand, Product
 from django.urls import reverse_lazy
+
+
+class BrandDeleteView(DeleteView):
+    model = Brand
+    template_name = 'brand_delete_template.html'
+    success_url = reverse_lazy('brand_list_url')
+    context_object_name = 'Brand'
+
+
+class BrandUpdateView(UpdateView):
+    model = Brand
+    template_name = 'brand_update_template.html'
+    fields = '__all__'
+    success_url = reverse_lazy('brand_list_url')
+    context_object_name = 'Brand'
 
 
 class HomeTemplateView(TemplateView):

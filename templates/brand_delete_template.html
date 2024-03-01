@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Brand</title>
+</head>
+<body>
+    <form action="" method="post">
+        {% csrf_token %}
+        <h4>Are you sure(delete {{ Brand.name }})?</h4>
+        <input type="submit" value="delete">
+    </form>
+</body>
+</html>

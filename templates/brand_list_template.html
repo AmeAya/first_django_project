@@ -9,6 +9,8 @@
     {% for brand in Brands %}
         <h1>{{ brand.name }}</h1>
         <a href="{% url 'brand_detail_url' brand.id %}">details</a>
+        <a href="{% url 'update_brand_url' brand.id %}">update</a>
+        <a href="{% url 'delete_brand_url' brand.id %}">delete</a>
     {% endfor %}
 </body>
 </html>

@@ -26,6 +26,8 @@ urlpatterns = [
     path('brand_detail/<int:pk>', BrandDetailView.as_view(), name='brand_detail_url'),
     path('create_brand', BrandCreateView.as_view(), name='create_brand_url'),
     path('create_product', ProductCreateView.as_view(), name='create_product_url'),
+    path('brand_update/<int:pk>', BrandUpdateView.as_view(), name='update_brand_url'),
+    path('brand_delete/<int:pk>', BrandDeleteView.as_view(), name='delete_brand_url'),
     path('', HomeTemplateView.as_view(), name='home_url'),
     # <int:pk> - Означает что здесь в юрле должна быть переменная pk типа integer
 ]
