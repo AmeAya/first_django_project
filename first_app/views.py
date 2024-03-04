@@ -3,6 +3,14 @@ from django.views.generic import ListView, DetailView, CreateView, TemplateView,
 from .models import Category, Brand, Product
 from django.urls import reverse_lazy
 
+from django.contrib.auth.forms import UserCreationForm
+
+
+class UserCreateView(CreateView):  # Registration View
+    form_class = UserCreationForm  # model не надо указывать, так как она указана в формочке UserCreationForm
+    success_url = reverse_lazy('login')
+    template_name = 'registration/user_create_template.html'
+
 
 class ProductDeleteView(DeleteView):
     model = Product

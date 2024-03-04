@@ -1,5 +1,5 @@
 Команды терминала:
-pip install pipenv / pip3 install pipenv - Установить интрумент pipenv
+pip install pipenv / pip3 install pipenv - Установить инструмент pipenv
 pipenv shell - Открыть консоль pipenv(Виртуального окружения)
 pip install Django - установить Джанго
 django-admin startproject core . - Создать базовые файлы Django в папке под названием core
@@ -11,3 +11,6 @@ python manage.py createsuperuser - Создать главного админа
 
 Базовые настройки:
 Все новые приложения(apps) добавляются в setting.py -> INSTALLED_APPS.
+
+
+pip install pillow - Установить библиотеку Pillow(Библиотека для работы с картинками)

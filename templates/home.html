@@ -6,6 +6,25 @@
 </head>
 <body>
     <h1 align="center">Welcome!!!</h1>
+
+    {% if user.is_authenticated %}
+        <p>Hello, {{ user.username }}!</p>
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Log Out">
+        </form>
+        <br>
+    {% else %}
+        <p>Hello, Stranger!</p>
+        <a href="{% url 'login' %}">Log In</a>
+        <br>
+        <a href="{% url 'registration_url' %}">Registration</a>
+
+    {% endif %}
+
+    <br>
+    <br>
+    <br>
     <a href="{% url 'category_list_url' %}">All Categories</a>
     <a href="{% url 'brand_list_url' %}">All Brands</a>
     <a href="{% url 'product_list_url' %}">All Products</a>

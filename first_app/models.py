@@ -27,7 +27,7 @@ class Product(models.Model):
     VIN = models.CharField(max_length=100)
     name = models.CharField(max_length=100)
     description = models.TextField()
-    image = models.TextField()
+    image = models.ImageField(upload_to='products/')
     price = models.DecimalField(max_digits=12, decimal_places=2)
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
     brand = models.ForeignKey('Brand', on_delete=models.CASCADE)

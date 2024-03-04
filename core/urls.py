@@ -15,11 +15,17 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from first_app.views import *
+
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/registration', UserCreateView.as_view(), name='registration_url'),
     path('category_list', CategoryListView.as_view(), name='category_list_url'),
     path('brand_list', BrandListView.as_view(), name='brand_list_url'),
     path('product_detail/<int:pk>', ProductDetailView.as_view(), name='product_detail_url'),
@@ -39,3 +45,7 @@ urlpatterns = [
 # <route> - Маршрут в ссылке
 # <view> - Вью которая обрабатывает этот маршрут
 # Если <view> написан через Class то тогда .as_view()
+
+
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
