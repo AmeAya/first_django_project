@@ -7,6 +7,23 @@
 <body>
     <h1 align="center">{{ Product.name }}</h1>
     <img src="{{ Product.image.url }}">
+
+    {% if Product.audio %}
+        <audio controls>
+            <source src="{{ Product.audio.url }}">
+        </audio>
+    {% else %}
+        <p>Audio for this Product is not available!</p>
+    {% endif %}
+
+    {% if Product.video %}
+        <video width="500px" controls>
+            <source src="{{ Product.video.url }}">
+        </video>
+    {% else %}
+        <p>Video for this Product is not available!</p>
+    {% endif %}
+
     <h3>Brand: {{ Product.brand.name }}</h3>
     <p>{{ Product.description }}</p>
     <h5>VIN: {{ Product.VIN }}</h5>

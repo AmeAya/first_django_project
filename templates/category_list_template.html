@@ -1,13 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Category List Template</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Category Page</title>
+{% endblock title %}
+
+{% block content %}
 <!--    <h1>{{ Categories }}</h1>-->
     {% for category in Categories %}
         <h1>{{ category.name }}</h1>
     {% endfor %}
-</body>
-</html>
+{% endblock content %}

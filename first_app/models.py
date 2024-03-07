@@ -28,6 +28,8 @@ class Product(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
     image = models.ImageField(upload_to='products/')
+    audio = models.FileField(upload_to='products/audio/', null=True, blank=True)
+    video = models.FileField(upload_to='products/video/', null=True, blank=True)
     price = models.DecimalField(max_digits=12, decimal_places=2)
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
     brand = models.ForeignKey('Brand', on_delete=models.CASCADE)
