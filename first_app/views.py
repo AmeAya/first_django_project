@@ -6,6 +6,57 @@ from django.urls import reverse_lazy
 from django.contrib.auth.forms import UserCreationForm
 
 
+# Написать слледующие вьюшки:
+# 1) AllBrandsView - Вью, которая рендерит все из модельки Brand
+# 2) BigProductView - Вью, которая рендерит все из модельки Product с price > 1000
+# 3) RandomColor - Вью, которая рендерит любую запись из модельки Color
+# Для всех вью, можно как создать новый темплейт, так и использовать старый, который подходит
+
+def dataFilterView(request, max_price):
+    products = Product.objects.filter(price__lte=max_price)
+    context = {
+        'Products': products
+    }
+    return render(request=request, template_name='product_list_template.html', context=context)
+
+
+def getTestView(request):
+    product = Product.objects.get(id=2)
+    # get - Возвращает только 1 объект
+    # Если по условию найдено 0 то ошибка
+    # Если по условию найдено больше чем 1 то ошибка
+    context = {
+        'Product': product
+    }
+    return render(request=request, template_name='test_template.html', context=context)
+
+
+def filterView(request):
+    products = Product.objects.filter(price__lte=1000)
+    # objects.filter - Возвращает QuerySet из указанной модельки, состоящий из объектов подходязих по указанному фильтру
+    # price__lte => price - Название поля, lte - less than or equal - Меньше или равно
+    # gte - greater than or equal - Больше или равно
+    # lt - less than - Меньше чем
+    # gt - greater than - Больше чем
+    # ne - not equal - Не равно
+    context = {
+        'Products': products
+    }
+    return render(request=request, template_name='product_list_template.html', context=context)
+
+
+def customView(request):
+    categories = Category.objects.all()
+    # Category.objects.all() - Запрос в таблицу Category "Вернуть все записи" (Select *)
+    brands = Brand.objects.all()
+    context = {
+        'Cats': categories,
+        'Brs': brands,
+        'Message': 'Hello!'
+    }
+    return render(request=request, template_name='custom_template.html', context=context)
+
+
 class UserCreateView(CreateView):  # Registration View
     form_class = UserCreationForm  # model не надо указывать, так как она указана в формочке UserCreationForm
     success_url = reverse_lazy('login')

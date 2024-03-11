@@ -37,6 +37,10 @@ urlpatterns = [
     path('product_list', ProductListView.as_view(), name='product_list_url'),
     path('product_update/<int:pk>', ProductUpdateView.as_view(), name='product_update_url'),
     path('product_delete/<int:pk>', ProductDeleteView.as_view(), name='product_delete_url'),
+    path('custom_view', customView, name='custom_url'),
+    path('products_filter', filterView, name='products_filter_url'),
+    path('test', getTestView, name='test_url'),
+    path('filter_max/<int:max_price>', dataFilterView, name='filter_max_url'),
     path('', HomeTemplateView.as_view(), name='home_url'),
     # <int:pk> - Означает что здесь в юрле должна быть переменная pk типа integer
 ]

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Custom</title>
+</head>
+<body>
+    <h1>{{ Message }}</h1>
+    {% for category in Cats %}
+        <h3>{{ category.name }}</h3>
+    {% endfor %}
+    {% for brand in Brs %}
+        <h3>{{ brand.name }}</h3>
+    {% endfor %}
+</body>
+</html>
